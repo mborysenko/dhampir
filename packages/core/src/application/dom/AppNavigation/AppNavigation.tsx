@@ -6,8 +6,7 @@ import classnames from 'classnames';
 
 import styles from './styles.less';
 
-export interface AppNavigationItemOption {
-}
+export type AppNavigationItemOption = unknown;
 
 export interface AppNavigationItemProps {
   id: string;

@@ -1,4 +1,3 @@
 import { BoxProps } from '../Box';
 
-export interface ColumnProps extends BoxProps {
-}
+export type ColumnProps = BoxProps;

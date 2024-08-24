@@ -14,6 +14,7 @@ async function check(options: Configuration, fix = false) {
         cwd: projectDir,
         fixTypes: ['problem', 'layout'],
         overrideConfigFile: eslint.configFile,
+        flags: ['unstable_ts_config'],
         fix
     })
 
@@ -21,7 +22,7 @@ async function check(options: Configuration, fix = false) {
         const results = await cli.lintFiles(eslint.pattern);
 
         const formatter = await cli.loadFormatter('stylish');
-        console.log(formatter.format(results))
+        console.log(formatter.format(results, { cwd: projectDir, rulesMeta: {}}))
     } catch (error: unknown) {
         throw error;
     }
