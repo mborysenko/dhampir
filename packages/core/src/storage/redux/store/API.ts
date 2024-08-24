@@ -1,2 +1,1 @@
-export interface ApplicationRootState {
-}
+export type ApplicationRootState = unknown;

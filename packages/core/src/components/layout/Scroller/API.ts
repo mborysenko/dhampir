@@ -1,2 +1,1 @@
-export interface ScrollerProps {
-}
+export type ScrollerProps = unknown;

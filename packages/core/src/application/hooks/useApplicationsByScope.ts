@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import { ExtensionContext } from '../../extensions/context';
 import { ApplicationRegistry, applicationRegistry, ApplicationScope, RootApplicationProps } from '../';
-import {IndexRouteProps} from "react-router";
 
 const getScopeApps = <P extends RootApplicationProps>(scope: ApplicationScope): ApplicationRegistry => {
     const ids = Object

@@ -11,7 +11,7 @@ export const configuration = {
         configFile: join(resolve(__dirname), 'jest/jest.config.ts'),
     },
     eslint: {
-        configFile: join(resolve(__dirname), '.eslintrc.json'),
+        configFile: join(resolve(__dirname), 'eslint.config.ts'),
         pattern: ['src/**/*.ts','src/**/*.tsx'],
     },
     filesToCopy: [

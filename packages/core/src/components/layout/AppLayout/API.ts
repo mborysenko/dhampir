@@ -1,2 +1,1 @@
-export interface AppLayoutProps {
-}
+export type AppLayoutProps = unknown;

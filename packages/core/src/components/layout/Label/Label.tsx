@@ -2,7 +2,7 @@ import { forwardRef, HTMLAttributes } from 'react';
 
 import styled from 'styled-components';
 import { Box } from '../Box';
-export interface LabelProps {}
+export type LabelProps = unknown;
 
 export const Label = styled(
     forwardRef<HTMLDivElement, LabelProps & HTMLAttributes<HTMLDivElement>>(({ ...other }, ref) => {
