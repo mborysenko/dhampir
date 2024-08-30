@@ -5,10 +5,6 @@ export default {
     },
     displayName: "test:unit",
     rootDir: "../..",
-    verbose: true,
-    notify: true,
-    bail: false,
-    collectCoverage: true,
     coverageDirectory: "<rootDir>/coverage",
     collectCoverageFrom: [
         "<rootDir>/src/**/*.ts",
