@@ -1,7 +1,7 @@
-import {AreaRouteRendering, FlattenRendering, PATH_SEPARATOR, RouteWithChildren} from '../index'
-import {isRootRoute} from './isRootRoute'
-import {stripPath} from './stripPath'
-import {isRouteDynamic} from './isRouteDynamic'
+import { AreaRouteRendering, FlattenRendering, PATH_SEPARATOR, RouteWithChildren } from '../index'
+import { isRootRoute } from './isRootRoute'
+import { stripPath } from './stripPath'
+import { isRouteDynamic } from './isRouteDynamic'
 
 const isRouteWithStar = (routePath?: string) => {
     return routePath && routePath.endsWith(`${PATH_SEPARATOR}*`)

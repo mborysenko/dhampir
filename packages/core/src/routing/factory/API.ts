@@ -47,6 +47,26 @@ export interface AreaRouteRendering<AREA extends string = string> extends Pick<R
     area: AREA;
 }
 
+export interface NormalizedRoute extends Pick<RouteWithChildren, 'rendering' | 'caseSensitive' | 'path'> {
+    routeId: string;
+    leafIds: string[];
+    parentId: string;
+    prefixPath: string;
+    rawData: Omit<RouteWithChildren, 'routes' | 'rendering'>
+}
+
+export interface RoutesRegistry {
+    order: RouteOrder[],
+    routes: RoutingMap;
+}
+export interface RouteOrder {
+    routeId: string;
+    leafIds: string[];
+}
+export interface RoutingMap {
+    [id: string]: NormalizedRoute;
+}
+
 export type RouteWithChildren = RouteProps &  RouteWithNavigation & {
     id?: string;
     routes?: RouteWithChildren[];

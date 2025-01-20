@@ -1,3 +1,4 @@
+import { parsePath, matchPath } from 'react-router';
 import { RouteWithChildren } from '../factory';
 import {getRootRoutes} from "./getRootRoutes";
 import {PATH_SEPARATOR} from "../constants";
@@ -13,18 +14,26 @@ const createFindRouteRule: (parts: string) => (route: RouteWithChildren) => bool
 
 const getRootRouteByPath: (currentPath: string) => RouteWithChildren | undefined = (currentPath) => {
     const rootRoutes = getRootRoutes();
+    const pathData = parsePath(currentPath);
 
-    if(isRootRoute(currentPath)) {
+    if(pathData.pathname === undefined || pathData.pathname.trim() === "")  {
+        return undefined;
+    }
+
+    if(isRootRoute(pathData.pathname)) {
         return rootRoutes.find(createFindRouteRule(currentPath)) || undefined;
     }
 
+    const parts = pathData.pathname
+        .split(PATH_SEPARATOR)
+        .filter(Boolean);
+
     if(rootRoutes.length === 1) {
         const root = rootRoutes[0];
-        const parts = currentPath.split(PATH_SEPARATOR).filter(Boolean);
         return (root && root.routes?.find(createFindRouteRule(parts[0]))) ? root : undefined;
     } else {
-        const parts = currentPath.split(PATH_SEPARATOR).filter(Boolean);
-        const first = rootRoutes.find(createFindRouteRule(parts[0]));
+        const first = rootRoutes
+            .find(createFindRouteRule(parts[0]));
 
         if(first) {
             return first;
@@ -36,8 +45,6 @@ const getRootRouteByPath: (currentPath: string) => RouteWithChildren | undefined
             return (root && root.routes?.find(createFindRouteRule(parts[0]))) ? root : undefined;
         }
     }
-
-    return undefined;
 };
 
 export { getRootRouteByPath }
